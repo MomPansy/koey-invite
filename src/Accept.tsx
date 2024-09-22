@@ -20,7 +20,7 @@ export function Accepted() {
             <ConfettiExplosion force={0.8} duration={3000} particleCount={250} width={3000}/>
              <button 
                 className="absolute top-4 left-4 text-white px-4 py-2 rounded" 
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/koey-invite/')}
             >
                 Home
             </button>

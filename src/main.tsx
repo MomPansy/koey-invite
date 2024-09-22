@@ -7,7 +7,7 @@ import './index.css';
 
 const router = createBrowserRouter(
   createRoutesFromElements([
-    <Route path="/" element={<App />} />,
+    <Route path="/koey-invite/" element={<App />} />,
     <Route path="/accepted" element={<Accepted />} />
   ])
 )

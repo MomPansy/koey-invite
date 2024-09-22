@@ -141,7 +141,7 @@ export function App() {
         )}
       </div>
     </div>
-    <img className='absolute bottom-0 right-0' src={pochaccoImg} alt='pochacco'/>
+    <img className='absolute bottom-0 right-0 z-10' src={pochaccoImg} alt='pochacco'/>
     </>
   )
 }

@@ -100,49 +100,52 @@ export function App() {
 
   return (
     <>
-    <div className="flex flex-col justify-center items-center">
-      <img className="w-32 h-32" src={hoverReject ? cryingGif : pleaseGif} alt="please gif" />
-      <p className="text-black mt-4">
-        You have been invited to celebrate your birthday with Jayden
-      </p>
-      <div
-        className="button-container"
-        style={{
-          position: 'relative',
-          width: '300px',
-          height: '200px',
-        }}
-      >
-        <button
+      <div className="flex flex-col justify-center items-center">
+        <img className="w-32 h-32" src={hoverReject ? cryingGif : pleaseGif} alt="please gif" />
+        <p className="text-black mt-4">
+          You have been invited to celebrate your birthday with Jayden
+        </p>
+        <div
+          className="button-container"
           style={{
-            position: 'absolute',
-            top: `${initialAcceptButtonPosition.top}px`,
-            left: `${initialAcceptButtonPosition.left - 60}px`,
-            transform: `scale(${acceptButtonSize})`,
-            transformOrigin: 'top left',
+            position: 'relative',
+            width: '300px',
+            height: '200px',
           }}
-          onClick={handleAccept}
         >
-          Accept
-        </button>
-        {count < RejectText.length && (
           <button
-            onClick={handleReject}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             style={{
-              position: rejectButtonPositionType,
-              top: `${rejectButtonPosition.top}px`,
-              left: `${rejectButtonPosition.left + 20}px`,
+              position: 'absolute',
+              top: `${initialAcceptButtonPosition.top}px`,
+              left: `${initialAcceptButtonPosition.left - 60}px`,
+              transform: `scale(${acceptButtonSize})`,
+              transformOrigin: 'top left',
             }}
+            onClick={handleAccept}
           >
-            {RejectText[count]}
+            Accept
           </button>
-        )}
+          {count < RejectText.length && (
+            <button
+              onClick={handleReject}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                position: rejectButtonPositionType,
+                top: `${rejectButtonPosition.top}px`,
+                left: `${rejectButtonPosition.left + 20}px`,
+              }}
+            >
+              {RejectText[count]}
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-    <img className='absolute bottom-0 right-0 z-10' src={pochaccoImg} alt='pochacco'/>
-    </>
+      <img className='absolute bottom-0 right-0 z-10 ' src={pochaccoImg} alt='pochacco' style={{
+        zIndex: -10, // Push the image behind other elements
+        pointerEvents: 'none', // Ensure the image doesn't interfere with button clicks
+      }} />
+    </ >
   )
 }
 

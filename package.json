@@ -2,7 +2,7 @@
   "name": "koey-birthday-invite",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://mompansy.github.io/koey-bday-invite/",
+  "homepage": "https://mompansy.github.io/koey-invite/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",

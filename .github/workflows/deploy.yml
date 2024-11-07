@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 env: 
-  VITE_OPEN_AI_API_KEY: ${{ secrets.VITE_OPEN_AI_API_KEY }}
-  
+  VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
+
 jobs:
   build:
     runs-on: ubuntu-latest

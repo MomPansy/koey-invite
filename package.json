@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "homepage": "https://mompansy.github.io/koey-invite/",
   "type": "module",
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "pnpm gh-pages -d dist",

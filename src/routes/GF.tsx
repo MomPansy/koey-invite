@@ -34,7 +34,7 @@ export function GF() {
         <div className="flex gap-2">
             <Itinerary />
             <button onClick={() => navigate('/koey-invite/gf/proposal')} disabled={!isButtonEnabled} style={{
-                backgroundColor: isButtonEnabled ? 'initial' : 'lightgray',
+                backgroundColor: isButtonEnabled ? 'black' : 'lightgray',
                 color: isButtonEnabled ? 'initial' : 'darkgray',
                 cursor: isButtonEnabled ? 'pointer' : 'not-allowed',
             }}>Proposal</button>
@@ -88,27 +88,48 @@ function LevelTwo({ setLevel }: { setLevel: React.Dispatch<React.SetStateAction<
         try {
             setLoading(true);
 
-            const completion = await openai.chat.completions.create({
-                model: "gpt-4o-mini",
-                response_format: {
-                    type: "json_object",
-                },
-                messages: [
-                    { role: "system", content: "You are a helpful assistant." },
-                    {
-                        role: "user",
-                        content: `Help me validate this answer, the answer should be "Did you get home safe?", so if the answer is along the lines of "Did you get home safely?" it should be correct. Your output format should be in this json object
+            const messages = [
+                        { role: "system", content: "You are a helpful assistant." },
                         {
-                            answer: true                      
-                        } or 
-                        {
-                            answer: false
-                        }
-                        
-                        The answer is: ${answer}`,
-                    },
-                ],
-            });
+                            role: "user",
+                            content: `Help me validate this answer, the answer should be "Did you get home safe?", so if the answer is similar to "Did you get home safely?" it should be correct. Your output format should be in this json object
+                            {
+                                answer: true                      
+                            } or 
+                            {
+                                answer: false
+                            }
+                            
+                            The answer is: ${answer}`,
+                        },
+                    ]
+
+            const model = "gpt-4o-mini";
+            const response_format = {
+                type: "json_object",
+            };
+
+            const res = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+                }, 
+                body: JSON.stringify({
+                    model,
+                    response_format,
+                    messages
+                })
+
+            })
+
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+
+            const completion = await res.json()
+
+            console.log(completion)
 
             const reply = completion.choices[0].message.content;
             if (!reply) return;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { OpenAI } from "openai";
 import { useNavigate } from "react-router-dom";
 import male1 from "/male1.png";
 import female1 from "/female1.png";
@@ -8,11 +7,6 @@ import female2 from "/female2.png";
 import squish from "/squish.png";
 
 type Position = 'absolute' | 'relative' | 'fixed' | 'sticky' | 'static';
-
-const openai = new OpenAI({
-    apiKey: import.meta.env.VITE_OPENAI_API_KEY as string,
-    dangerouslyAllowBrowser: true
-});
 
 export function GF() {
     const navigate = useNavigate();
@@ -128,8 +122,6 @@ function LevelTwo({ setLevel }: { setLevel: React.Dispatch<React.SetStateAction<
             }
 
             const completion = await res.json()
-
-            console.log(completion)
 
             const reply = completion.choices[0].message.content;
             if (!reply) return;

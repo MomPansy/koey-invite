@@ -144,7 +144,7 @@ function LevelTwo({ setLevel }: { setLevel: React.Dispatch<React.SetStateAction<
     return (
         <div className="w-full">
             <h1>What was my first text to you?</h1>
-            <div className="flex gap-4 justify-center mt-4">
+            <div className="flex gap-4 justify-center mt-4 rounded-md">
                 <input
                     className="bg-white p-2"
                     placeholder="Answer"
@@ -284,7 +284,7 @@ function LevelContent({ setLevel, question, correctAnswer, images, offset }: { s
             <h1>{question}</h1>
             <div className="flex gap-4 justify-center mt-4">
                 <input
-                    className="bg-white p-2"
+                    className="bg-white p-2 rounded-md"
                     placeholder="Answer"
                     value={answer}
                     onChange={(e) => setAnswer(e.target.value)}

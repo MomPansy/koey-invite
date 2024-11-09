@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      wallpaper: ['Wallpaper', 'sans-serif'],
+    }
   },
   plugins: [
     Preline

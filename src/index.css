@@ -1,15 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Wallpaper';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/wallpaper.otf) format('woff2');
+  }
+}
+
 :root {
-  font-family: 'Vintage Comic', sans-serif;
+  font-family: 'Wallpaper', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-size: xx-large;
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #fcf8e2;
+  background-color: #b6b8d0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -8,7 +8,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/wallpaper.otf) format('woff2');
+    src: url(./wallpaper.otf) format('opentype');
   }
 }
 

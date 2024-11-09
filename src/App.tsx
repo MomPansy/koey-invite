@@ -54,7 +54,7 @@ const TimelineItem = ({ date, title, description, icon, route }: Props) => {
           {icon}
           {title}
         </h3>
-        {description && <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">{description}</p>}
+        {description && <p className="mt-1 text-sm text-gray-600 dark:text-white">{description}</p>}
 
       </div>
       {/* End Right Content */}

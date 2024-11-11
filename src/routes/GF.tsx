@@ -36,11 +36,18 @@ export function GF() {
     )
 }
 export function Proposal() {
+    const navigate = useNavigate();
     const [level, setLevel] = useState(1);
     return (
         <>
-            <div className="absolute top-4 left-4">
+  
+            <div className="absolute top-4 left-4 gap-2">
                 <button onClick={() => setLevel(1)}>Reset</button>
+                <button
+                onClick={() => navigate('/koey-invite/')}
+            >
+                Home
+            </button>
             </div>
             <div className="w-screen py-24">
                 <div>
@@ -83,10 +90,10 @@ function LevelTwo({ setLevel }: { setLevel: React.Dispatch<React.SetStateAction<
             setLoading(true);
 
             const messages = [
-                        { role: "system", content: "You are a helpful assistant." },
-                        {
-                            role: "user",
-                            content: `Help me validate this answer, the answer should be "Did you get home safe?", so if the answer is similar to "Did you get home safely?" it should be correct. Your output format should be in this json object
+                { role: "system", content: "You are a helpful assistant." },
+                {
+                    role: "user",
+                    content: `Help me validate this answer, the answer should be "Did you get home safe?", so if the answer is similar to "Did you get home safely?" it should be correct. Your output format should be in this json object
                             {
                                 answer: true                      
                             } or 
@@ -95,8 +102,8 @@ function LevelTwo({ setLevel }: { setLevel: React.Dispatch<React.SetStateAction<
                             }
                             
                             The answer is: ${answer}`,
-                        },
-                    ]
+                },
+            ]
 
             const model = "gpt-4o-mini";
             const response_format = {
@@ -104,11 +111,11 @@ function LevelTwo({ setLevel }: { setLevel: React.Dispatch<React.SetStateAction<
             };
 
             const res = await fetch("https://api.openai.com/v1/chat/completions", {
-                method: "POST", 
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-                }, 
+                },
                 body: JSON.stringify({
                     model,
                     response_format,
@@ -203,7 +210,7 @@ function LevelFour() {
     useEffect(() => {
         if (yesButtonRef.current) {
             const yesButtonRect = yesButtonRef.current.getBoundingClientRect();
-            
+
             // Set the "No" button position right next to the "Yes" button
             setRejectButtonPosition({
                 top: yesButtonRect.top,
